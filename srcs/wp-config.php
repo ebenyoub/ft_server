@@ -23,7 +23,7 @@
 define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define( 'DB_USER', 'wordpress_user' );
+define( 'DB_USER', 'user' );
 
 /** MySQL database password */
 define( 'DB_PASSWORD', 'ebenyoub' );
