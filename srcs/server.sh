@@ -20,6 +20,8 @@ echo "FLUSH PRIVILEGES;" | mysql -u root
 figlet OpenSSL
 mkdir -p /etc/nginx/ssl
 chmod 700 /etc/nginx/ssl
+chown -R www-data:www-data /var/www/*
+chmod -R 755 /var/www/*
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/localhost.key -out /etc/nginx/ssl/localhost.csr -subj "/C=FR/ST=France/L=Lyon/O=ebenyoub/OU=42/CN=localhost"
 
 # Configuration de Nginx
@@ -36,6 +38,7 @@ rm /etc/nginx/sites-enabled/default
 figlet wordpress
 wget https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz
+rm -rf latest.tar.gz
 mv wordpress /var/www/ebenyoub
 mv /ft_server/wp-config.php /var/www/ebenyoub/wordpress/
 rm -rf /var/www/ebenyoub/wordpress/wp-config-sample.php
@@ -44,6 +47,7 @@ rm -rf /var/www/ebenyoub/wordpress/wp-config-sample.php
 figlet phpmyadmin
 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz
 tar -zxvf phpMyAdmin-4.9.0.1-all-languages.tar.gz
+rm -rf phpMyAdmin-4.9.0.1-all-languages.tar.gz
 mv phpMyAdmin-4.9.0.1-all-languages /var/www/ebenyoub/phpmyadmin
 ln -s /usr/share/phpmyadmin /usr/share/nginx/html
 
